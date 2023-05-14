@@ -1,0 +1,16 @@
+.LinkButton {
+  border-radius: 0.5rem;
+  background-color: skyblue;
+  padding: 0.5em 2em;
+  font-weight: bold;
+  box-shadow: 0 0.1em 0.5em rgba(0 0 0 / 0.2);
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  transition: transform 200ms, box-shadow 200ms;
+}
+
+.LinkButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.25em 0.5em rgba(0 0 0 / 0.5);
+}

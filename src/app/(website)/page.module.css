@@ -1,0 +1,27 @@
+.container {
+  margin-block: 4em;
+}
+
+.split {
+  display: flex;
+  gap: 2rem;
+}
+
+.split > * {
+  flex-basis: 100%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.left > h1 {
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+}

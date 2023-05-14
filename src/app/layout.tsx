@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import StyledJsxRegistry from "./registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-        <StyledJsxRegistry>{children}</StyledJsxRegistry>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

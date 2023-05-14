@@ -1,35 +1,25 @@
 import React from "react";
+import styles from "./LinkButton.module.css";
 
 interface LinkButtonProps {
   href: string;
   children: React.ReactNode;
+  fullWidth?: boolean;
 }
 
-const LinkButton: React.FC<LinkButtonProps> = ({ href, children }) => {
+const LinkButton: React.FC<LinkButtonProps> = ({
+  href,
+  children,
+  fullWidth,
+}) => {
   return (
-    <>
-      <a href={href}>{children}</a>
-
-      <style jsx>{`
-        a {
-          border-radius: 0.5rem;
-          background-color: skyblue;
-          padding: 0.5em 2em;
-          font-weight: bold;
-          box-shadow: 0 0.1em 0.5em rgba(0 0 0 / 0.2);
-          text-align: center;
-          width: 100%;
-          text-decoration: none;
-          color: black;
-          transition: transform 200ms, box-shadow 200ms;
-        }
-
-        a:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 0.25em 0.5em rgba(0 0 0 / 0.5);
-        }
-      `}</style>
-    </>
+    <a
+      href={href}
+      className={styles.LinkButton}
+      style={{ width: `${fullWidth ? "100%" : "initial"}` }}
+    >
+      {children}
+    </a>
   );
 };
 
