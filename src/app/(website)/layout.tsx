@@ -72,7 +72,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           color: white;
           text-align: right;
           padding: 2rem;
-          position: absolute;
+          position: fixed;
           bottom: 0;
           left: 0;
           right: 0;
@@ -89,6 +89,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           .links {
             display: none;
+          }
+
+          footer {
+            position: static;
+            width: 100vw;
+            margin-left: calc((100% - 100vw) / 2);
           }
         }
       `}</style>
