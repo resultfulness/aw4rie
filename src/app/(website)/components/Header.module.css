@@ -1,0 +1,35 @@
+.header {
+  padding: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo > a {
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (width < 35rem) {
+  .header {
+    background-color: #eee;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    margin-left: calc((100% - 100vw) / 2);
+  }
+
+  .links {
+    display: none;
+  }
+}

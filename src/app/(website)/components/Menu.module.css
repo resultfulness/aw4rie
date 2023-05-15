@@ -1,22 +1,35 @@
 .Menu {
-  display: grid;
-  gap: 1rem;
   position: fixed;
-  background-color: #eee;
-  top: 1rem;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   padding: 1rem;
-  z-index: 999;
-  border-radius: 1.5rem;
-  grid-template-columns: 1fr 1fr auto;
-  width: calc(100% - 4rem);
-  transform: translateY(-200%);
-  transition: transform 800ms;
+  gap: 1rem;
+  background-color: #ddd;
+  height: 100vh;
+  height: 100lvh;
+  transform: translateX(200%);
+  transition: transform 400ms ease-in-out;
 }
 
-@media (width < 26rem) {
-  .Menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.overlay {
+  opacity: 0;
+  background-color: black;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  height: 100vh;
+  height: 100lvh;
+
+  transition: opacity 400ms;
+}
+
+@media (width > 35rem) {
+
+  .Menu,
+  .overlay {
+    display: none;
   }
 }

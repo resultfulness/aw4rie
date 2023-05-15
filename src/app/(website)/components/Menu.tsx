@@ -6,23 +6,34 @@ import styles from "./Menu.module.css";
 
 interface MenuProps {
   show: boolean;
-  onCloseButtonClick: () => void;
+  onCloseClick: () => void;
 }
 
-const Menu: React.FC<MenuProps> = ({ show, onCloseButtonClick }) => {
+const Menu: React.FC<MenuProps> = ({ show, onCloseClick }) => {
   return (
-    <div
-      className={styles.Menu}
-      style={{
-        transform: `translateY(${show ? "0" : "-200%"})`,
-      }}
-    >
-      <LinkButton href='/app/login'>Login</LinkButton>
-      <LinkButton href='/app/register'>Register</LinkButton>
-      <MenuButton onClick={onCloseButtonClick}>
-        <MdClose size={36}></MdClose>
-      </MenuButton>
-    </div>
+    <>
+      <div
+        className={styles.overlay}
+        onClick={onCloseClick}
+        style={{ opacity: `${show ? ".5" : "0"}` }}
+      ></div>
+      <div
+        className={styles.Menu}
+        style={{
+          transform: `translateX(${show ? "0" : "200%"})`,
+        }}
+      >
+        <MenuButton onClick={onCloseClick}>
+          <MdClose size={36}></MdClose>
+        </MenuButton>
+        <LinkButton fullWidth href='/app/login'>
+          Login
+        </LinkButton>
+        <LinkButton fullWidth href='/app/register'>
+          Register
+        </LinkButton>
+      </div>
+    </>
   );
 };
 

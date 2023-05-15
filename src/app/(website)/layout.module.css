@@ -3,25 +3,6 @@
   margin-inline: auto;
 }
 
-.nav {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo > a {
-  font-weight: bold;
-  font-size: 2rem;
-  text-decoration: none;
-  color: inherit;
-}
-
-.links {
-  display: flex;
-  gap: 1rem;
-}
-
 .footer {
   background-color: black;
   color: white;
@@ -34,18 +15,6 @@
 }
 
 @media (width < 35rem) {
-  .nav {
-    background-color: #eee;
-    position: fixed;
-    top: 1rem;
-    width: calc(100% - 4rem);
-    border-radius: 1.5rem;
-  }
-
-  .links {
-    display: none;
-  }
-
   .footer {
     position: static;
     width: 100vw;
