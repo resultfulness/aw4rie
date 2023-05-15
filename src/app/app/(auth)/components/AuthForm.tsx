@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
 import Input from "./Input";
 import styles from "./AuthForm.module.css";
 
@@ -31,16 +32,39 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
 
     switch (variant) {
       case "REGISTER":
-        // post to /api/register
+        fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then(async (res) => {
+            if (res.ok) {
+              const resp = await res.json();
+              if (resp.message) console.error(resp.message);
+            }
+          })
+          .catch(() => console.error("something went wrong"))
+          .finally(() => setIsLoading(false));
 
         break;
       case "LOGIN":
-        // post to /api/login
+        signIn("credentials", {
+          ...data,
+          redirect: false,
+        })
+          .then((cb) => {
+            if (cb?.error) {
+              console.error(cb.error);
+            } else {
+              console.log("success");
+            }
+          })
+          .finally(() => setIsLoading(false));
 
         break;
     }
-
-    setIsLoading(false);
   };
 
   return (

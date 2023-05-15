@@ -26,6 +26,11 @@
   font-weight: bold;
 }
 
+.button:disabled {
+  cursor: auto;
+  background-color: lightblue;
+}
+
 .form-switch {
   text-align: center;
   color: slategrey;
