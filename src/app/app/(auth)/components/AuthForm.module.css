@@ -1,5 +1,6 @@
 .title {
   text-align: center;
+  padding-inline: 1rem;
 }
 
 .form {
@@ -28,4 +29,12 @@
 .form-switch {
   text-align: center;
   color: slategrey;
+}
+
+.form-switch a {
+  color: inherit;
+}
+
+.form-switch a:hover {
+  color: black;
 }

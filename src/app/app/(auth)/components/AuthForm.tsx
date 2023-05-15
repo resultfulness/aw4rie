@@ -84,14 +84,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
           {variant === "LOGIN" ? "Log in" : "Register"}
         </button>
 
-        <a
-          href={`/app/${variant === "LOGIN" ? "register" : "login"}`}
-          className={styles["form-switch"]}
-        >
+        <p className={styles["form-switch"]}>
           {variant === "LOGIN"
             ? "Don't have an account yet?"
             : "Already have an account?"}
-        </a>
+          &nbsp;
+          <a href={`/app/${variant === "LOGIN" ? "register" : "login"}`}>
+            {variant === "LOGIN" ? "Register" : "Log in"}
+          </a>
+        </p>
       </form>
     </>
   );
