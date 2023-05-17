@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Input from "./Input";
 import styles from "./AuthForm.module.css";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -14,7 +15,15 @@ interface AuthFormProps {
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
+  const session = useSession();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (session?.status === "authenticated") {
+      router.push("/app");
+    }
+  }, [session?.status, router]);
 
   const {
     register,
@@ -44,6 +53,13 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
             if (res.ok) {
               const resp = await res.json();
               if (resp.message) toast.error(resp.message);
+              else {
+                toast.success("Successfully registered!");
+                signIn("credentials", {
+                  ...data,
+                  redirect: false,
+                });
+              }
             }
           })
           .catch(() => toast.error("Something went wrong"))
@@ -60,6 +76,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
               toast.error(cb.error);
             } else {
               toast.success("Logged in successfully");
+              router.push("/app");
             }
           })
           .finally(() => setIsLoading(false));
