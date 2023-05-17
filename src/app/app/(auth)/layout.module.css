@@ -1,18 +1,39 @@
-.home-link {
+.link-wrapper {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+@media (width < 450px) {
+  .link-wrapper {
+    justify-content: space-between;
+    margin-inline: 2rem;
+  }
+}
+
+.link {
   text-decoration: none;
-  position: absolute;
-  padding-block: 0.2rem;
-  margin: 0.8rem;
+  padding-block: 0.5rem;
   display: flex;
   align-items: center;
   gap: .5rem;
   font-size: 1.5rem;
   color: skyblue;
+  position: relative;
 }
 
-.home-link:hover,
-.home-link:focus {
-  border-bottom: 2px solid skyblue
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 2px skyblue;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.link:hover::after,
+.link:focus::after {
+  opacity: 1;
 }
 
 .container {

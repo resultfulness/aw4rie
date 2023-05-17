@@ -6,10 +6,16 @@ import { MdArrowBack } from "react-icons/md";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <a href='/' className={styles["home-link"]}>
-        <MdArrowBack size={36} />
-        HOME
-      </a>
+      <div className={styles["link-wrapper"]}>
+        <a href='/' className={styles["link"]}>
+          <MdArrowBack size={36} />
+          HOME
+        </a>
+        <a href='/app' className={styles["link"]}>
+          <MdArrowBack size={36} />
+          APP
+        </a>
+      </div>
       <main className={styles.container}>{children}</main>
     </>
   );
