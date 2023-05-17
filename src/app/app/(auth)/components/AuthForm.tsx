@@ -5,6 +5,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import Input from "./Input";
 import styles from "./AuthForm.module.css";
+import toast from "react-hot-toast";
 
 type Variant = "LOGIN" | "REGISTER";
 
@@ -42,10 +43,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
           .then(async (res) => {
             if (res.ok) {
               const resp = await res.json();
-              if (resp.message) console.error(resp.message);
+              if (resp.message) toast.error(resp.message);
             }
           })
-          .catch(() => console.error("something went wrong"))
+          .catch(() => toast.error("Something went wrong"))
           .finally(() => setIsLoading(false));
 
         break;
@@ -56,9 +57,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ variant }) => {
         })
           .then((cb) => {
             if (cb?.error) {
-              console.error(cb.error);
+              toast.error(cb.error);
             } else {
-              console.log("success");
+              toast.success("Logged in successfully");
             }
           })
           .finally(() => setIsLoading(false));
